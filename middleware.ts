@@ -7,5 +7,7 @@ export default withAuth({
 });
 
 export const config = {
-  mather: ["/users/:path*"],
+  mather: ["/users/:path*", "/conversations/:path*"],
 };
+
+// 5:30:00
