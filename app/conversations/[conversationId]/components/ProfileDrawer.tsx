@@ -12,6 +12,7 @@ import useOtherUser from "@/app/hooks/useOtherUser";
 import Avatar from "@/app/components/Avatar";
 import AvatarGroup from "@/app/components/AvatarGroup";
 import ConfirmModal from "./ConfirmModal";
+import useActiveList from "@/app/hooks/useActiveList";
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -37,16 +38,16 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
     return data.name || otherUser.name;
   }, [data.name, otherUser.name]);
 
-  // const { members } = useActiveList();
-  // const isActive = members.indexOf(otherUser?.email!) !== -1;
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
 
-  // const statusText = useMemo(() => {
-  //   if (data.isGroup) {
-  //     return `${data.users.length} members`;
-  //   }
+  const statusText = useMemo(() => {
+    if (data.isGroup) {
+      return `${data.users.length} members`;
+    }
 
-  //   return isActive ? "Active" : "Offline";
-  // }, [data, isActive]);
+    return isActive ? "Active" : "Offline";
+  }, [data, isActive]);
 
   return (
     <>
@@ -107,7 +108,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           </div>
                           <div>{title}</div>
                           <div className="text-sm text-gray-500">
-                            {/* {statusText} */}
+                            {statusText}
                           </div>
                           <div className="flex gap-10 my-8">
                             <div
