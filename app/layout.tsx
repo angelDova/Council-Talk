@@ -9,7 +9,7 @@ import ActiveStatus from "./components/ActiveStatus";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Messenger App",
+  title: "Council Talk",
   description: "Created By angelDova",
 };
 
